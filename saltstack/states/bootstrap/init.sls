@@ -76,6 +76,7 @@ base_packages:
       - fortunes
       - bash-completion
       - man
+      - perf-tools-unstable
 
 
 linux_metrics_workshop:
