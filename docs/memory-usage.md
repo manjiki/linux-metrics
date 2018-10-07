@@ -8,9 +8,9 @@ You will need 3 open terminals for this task. **DO NOT RUN ANY SCRIPTS ON YOUR L
 
 ### Task M1: Memory usage, Caches and Buffers
 
-1. Fire up `top` on Terminal 1, and write down how much `free` memory you have (**keep it running for the rest of this module**):
+1. Fire up `vmstat 1` on Terminal 1, and write down how much `free` memory you have (**keep it running for the rest of this module**):
     ```bash
-    (term 1) root:~# top
+    (term 1) root:~# vmstat 1
     ```
 2. Start the memory hog `hog.sh` on Terminal 2, let it run until it gets killed (if it hangs- use `Ctrl+c`):
     ```bash
@@ -44,7 +44,7 @@ You will need 3 open terminals for this task. **DO NOT RUN ANY SCRIPTS ON YOUR L
     (term 2) root:~# time python -c 'print "Hello World"'
     ```
 	3. Now re-run our dummy Python application, but this time without flushing the cached memory. Can you see the difference?
-6. Run the `dentry.py` script and observe the memory usage using `free`. What is using the memory? How does it effect performance?
+6. Run the `dentry.py` script and observe the memory usage using `free` or `vmstat 1`. What is using the memory? How does it effect performance?
     ```bash
     (term 2) root:~# python linux-metrics/scripts/memory/dentry.py
     (term 2) root:~# echo 3 > /proc/sys/vm/drop_caches
