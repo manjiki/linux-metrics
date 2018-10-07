@@ -8,15 +8,15 @@ upgrade:
     - dist_upgrade: True
     - order: 2
 
-draios_repo:
-  pkgrepo.managed:
-    - humanname: Draios
-    - name: deb http://download.draios.com/stable/deb stable-$(ARCH)/
-    - file: /etc/apt/sources.list.d/draios.list
-    - keyid: EC51E8C4
-    - keyserver: keyserver.ubuntu.com
-    - require:
-      - pkg: base_packages
+#draios_repo:
+#  pkgrepo.managed:
+#    - humanname: Draios
+#    - name: deb http://download.draios.com/stable/deb stable-$(ARCH)/
+#    - file: /etc/apt/sources.list.d/draios.list
+#    - keyid: EC51E8C4
+#    - keyserver: keyserver.ubuntu.com
+#    - require:
+#      - pkg: base_packages
 
 base_packages:
   pkg.installed:
@@ -75,11 +75,12 @@ base_packages:
       - linux-headers-amd64
       - fortunes
       - bash-completion
+      - man
 
 
 linux_metrics_workshop:
   git.latest:
-    - name: https://github.com/kargig/linux-metrics/
+    - name: https://github.com/manjiki/linux-metrics/
     - rev: master
     - target: /root/linux-metrics
     - remote: origin
@@ -91,7 +92,7 @@ netdata:
     - unless: ls -la /opt/netdata/
     - require:
       - pkg: base_packages
-  service.running:
+  service.dead:
     - require:
       - cmd: netdata
     - watch:
@@ -148,3 +149,8 @@ iptables:
     - name: iptables-restore</etc/iptables/rules.v4
     - watch:
       - file: /etc/iptables/rules.v4
+
+paranoid:
+  cmd.run:
+    - name: echo '-1' > /proc/sys/kernel/perf_event_paranoid
+

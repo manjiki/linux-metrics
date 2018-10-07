@@ -40,7 +40,7 @@ root_bashrc:
 
 linux_metrics_workshop_2:
   git.latest:
-    - name: https://github.com/kargig/linux-metrics/
+    - name: https://github.com/manjiki/linux-metrics/
     - rev: master
     - target: /home/workshop/linux-metrics
     - remote: origin
