@@ -17,7 +17,7 @@ the system identifies a higher-priority thread to run.
    ```bash
    (term 1) root:~# vmstat 2
    ```
-2. Raise that number by executing `stress -i 10` in a new session (#2):
+2. Raise that number by executing `stress -i 5` in a new session (#2):
    ```bash
    (term 2) root:~# stress -i 10
    ```
